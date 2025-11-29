@@ -1,80 +1,69 @@
-# Case 01: Customer Satisfaction Drivers Analysis
+# Case 01: Factor Analysis
 
-## 1. Contexto del Negocio
-**Cliente:** TechnoServe Solutions (Empresa B2B de Tecnología)
-
-**Problema de Negocio:**
-La empresa recopila trimestralmente una encuesta de satisfacción con 23 variables métricas. La dirección enfrenta dificultades para priorizar acciones estratégicas debido a la dispersión de estos indicadores.
-
-**Objetivo:**
-Identificar las dimensiones latentes (factores) que estructuran la experiencia del cliente y determinar cuáles tienen mayor impacto en la satisfacción general y la lealtad.
+**Autores:** 
+* Emilio Guillén Ramírez
+* Mauricio Loera Abundis 
+* Gerardo Javier López García  
 
 ---
 
-## 2. Metodología
-Se aplicó **Análisis Factorial** para reducir la dimensionalidad de los datos.
+## Contexto del Negocio
+TechnoServe enfrenta el desafío de priorizar sus inversiones operativas basándose en múltiples métricas de satisfacción dispersas. El objetivo de este análisis fue identificar las dimensiones latentes que estructuran la experiencia del cliente y cuantificar su impacto real en la lealtad y satisfacción general.
 
-* **Método de Extracción:** Ejes Principales (MinRes).
-* **Rotación:** **Promax (Oblicua)**. Se seleccionó una rotación oblicua asumiendo que las dimensiones de satisfacción (ej. técnica y relacional) están correlacionadas entre sí, lo cual se confirmó en el análisis ($r \approx 0.4 - 0.6$).
-* **Criterio de Retención:** **Criterio de Kaiser**. El análisis de *Eigenvalues* mostró claramente 5 factores con valor > 1.0, lo que llevó a seleccionar una estructura de **5 dimensiones** (explicando el **61.8% de la varianza**), superior a modelos más simples de 3 factores.
+## Metodología y Validación del Modelo
+Se aplicó un Análisis Factorial Exploratorio (EFA) con rotación Promax. La evidencia estadística (Criterio de Kaiser, autovalores > 1) reveló una estructura robusta de **5 factores**.
 
----
+* **Varianza Explicada:** 61.8% (Captura la mayoría de la información de los datos).
+* **Poder Predictivo ($R^2$):** 0.60 (El modelo explica el 60% de la satisfacción).
 
-## 3. Datos
-* **Muestra:** 3,400 respuestas de clientes corporativos.
-* **Variables:** 23 métricas de percepción (escala 1-5) + métricas de resultado (Satisfacción, NPS, Renovación).
-* **Integridad:** Se realizó imputación de valores nulos utilizando la media para mantener la consistencia de la matriz factorial.
+## Identificación de Factores e Impacto
+El modelo de regresión lineal permitió rankear los factores según su coeficiente de impacto ($\beta$) en la satisfacción general.
 
----
+| Factor | Dimensión de Negocio | Impacto ($\beta$) | Prioridad |
+| :--- | :--- | :---: | :--- |
+| F1 (`F_tech`) | Excelencia Técnica | 0.19 | Alta |
+| F2 (`F_val`) | Valor y Transparencia | 0.17 | Alta |
+| F3 (`F_pro`) | Gestión de Proyectos | 0.16 | Media |
+| F4 (`F_sup`) | Soporte y Habilitación | 0.15 | Media |
+| F5 (`F_rel`) | Relación y Confianza | 0.15 | Media |
 
-## 4. Hallazgos Principales
-El análisis reveló 5 pilares estratégicos que componen la experiencia del cliente:
+## Interpretación de Factores
 
-### Estructura Factorial (5 Dimensiones)
-1.  **Excelencia Técnica (Factor 1 `F_tech`):**
-    * Agrupa: `innovation_solutions`, `problem_solving`, `system_integration`, `technical_documentation`, `technical_expertise`.
-    * *Significado:* La capacidad de la empresa para entregar soluciones funcionales y avanzadas.
-2.  **Gestión de Proyectos (Factor 2 `F_pro`):**
-    * Agrupa: `project_management`, `timeline_adherence`, `quality_deliverables`, `budget_control`, `change_-management`.
-    * *Significado:* La eficiencia operativa y el cumplimiento de promesas de entrega.
-3.  **Relación y Confianza (Factor 3 `F_rel`):**
-    * Agrupa: `trust_reliability`, `executive_access`,`long_term_partnership`, `account_manager_responsive`, `communication_clarity`.
-    * *Significado:* La calidad humana y estratégica del vínculo con el cliente.
-4.  **Valor y Transparencia (Factor 4 `F_val`):**
-    * Agrupa: `billing_accuracy`, `roi_demonstration`, `cost_transparency`, `competitive_pricing`, `value_for_money`.
-    * *Significado:* La percepción de justicia económica y claridad administrativa.
-5.  **Soporte y Habilitación (Factor 5 `F_sup`):**
-    * Agrupa: `training_quality`, `support_responsiveness`, `documentation_help`.
-    * *Significado:* El acompañamiento post-venta y empoderamiento del usuario.
+### Factor 1: Excelencia Técnica (`F_tech`)
+Agrupa variables como *Innovation Solutions*, *Problem Solving*, *System Integration*, *Technical Documentation* y *Technical Expertise*. Representa la capacidad nuclear de la empresa. Al ser el driver #1, indica que los clientes valoran la funcionalidad del producto por encima del trato humano.
 
-### Impacto en el Negocio (Modelo Predictivo)
-Un modelo de regresión lineal ($R^2 = 0.60$) determinó el peso de cada factor en la satisfacción general:
+### Factor 2: Valor y Transparencia (`F_val`)
+Agrupa *Billing Accuracy*, *ROI Demonstration*, *Cost Transparency*, *Competitive Pricing* y *Value for Money*. Refleja la percepción de justicia económica. Errores administrativos aquí generan detractores inmediatos.
 
-| Factor | Impacto ($\beta$) | Prioridad |
-| :--- | :---: | :--- |
-| **Excelencia Técnica** | **0.19** | Alta |
-| **Valor y Transparencia** | **0.17** | Alta |
-| **Gestión de Proyectos** | 0.16 | Media |
-| **Soporte y Habilitación** | 0.15 | Media |
-| **Relación y Confianza** | 0.15 | Media |
+### Factor 3: Gestión de Proyectos (`F_pro`)
+Agrupa *Project Management*, *Timeline Adherence*, *Quality Deliverables*, *Budget Control* y *Change Management*. Refleja la eficiencia operativa y el cumplimiento de promesas de entrega.
 
-> *Insight:* Aunque todas las dimensiones importan, la **solidez técnica** y la **percepción de valor** son los diferenciadores más críticos.
+### Factor 4: Soporte y Habilitación (`F_sup`)
+Agrupa *Training Quality*, *Support Responsiveness* y *Documentation Help*. Refleja el acompañamiento post-venta y empoderamiento del usuario.
 
----
+### Factor 5: Relación y Confianza (`F_rel`)
+Agrupa *Trust Reliability*, *Executive Access*, *Long Term Partnership*, *Account Manager Responsive* y *Communication Clarity*. Representa la calidad humana y estratégica del vínculo con el cliente.
 
-## 5. Recomendaciones de Negocio
+## Recomendaciones de Negocio e Impacto Esperado
 
-1.  **Inversión Prioritaria en QA e Innovación (Técnica):**
-    * Al ser el driver #1, se debe asegurar que el producto funcione impecablemente. Asignar recursos a *System Integration* e *Innovation*.
+A continuación, se presentan las iniciativas estratégicas derivadas del análisis, priorizadas por su capacidad de mover la satisfacción general.
 
-2.  **Revisión de Procesos de Facturación (Valor):**
-    * El factor "Valor y Transparencia" es el segundo más importante. Errores en `billing_accuracy` o falta de `cost_transparency` dañan desproporcionadamente la satisfacción. Se recomienda auditar el proceso de facturación.
+### Blindaje del Core Técnico (Prioridad: Alta)
+Dado que la Excelencia Técnica es el predictor más fuerte ($\beta=0.19$), la calidad del producto no es negociable.
+* **Recomendación:** Establecer células de innovación dedicadas y reforzar las pruebas automatizadas de integración de sistemas (*System Integration*).
+* **Impacto Esperado:** Incremento directo en la satisfacción general y reducción de la tasa de abandono (Churn) por fallas técnicas críticas.
 
-3.  **Estandarización de la Gestión de Proyectos:**
-    * Dado el peso de la adherencia a cronogramas (`timeline_adherence`), se sugiere implementar una PMO (Oficina de Gestión de Proyectos) para estandarizar entregas.
+### Auditoría de Procesos de Facturación (Prioridad: Alta)
+El factor de Valor y Transparencia es el segundo más influyente ($\beta=0.17$). La fricción administrativa destruye valor rápidamente.
+* **Recomendación:** Implementar un sistema de "Facturación Transparente" con alertas preventivas de presupuesto y auditoría de precisión en *Billing Accuracy*.
+* **Impacto Esperado:** Reducción drástica de detractores (NPS) causados por disputas administrativas y mejora en la percepción de ROI del cliente.
 
----
+### Estandarización de la PMO (Gestión de Proyectos)
+Para el factor 3, la variabilidad en la entrega es el enemigo.
+* **Recomendación:** Crear una Oficina de Gestión de Proyectos (PMO) para asegurar que la adherencia a cronogramas (*timeline adherence*) sea un estándar garantizado y no dependa del gestor individual.
+* **Impacto Esperado:** Mayor predictibilidad en las entregas y mejora en la métrica de *Budget Control*.
 
-## Instrucciones de Reproducción
-1.  Instalar dependencias:
-2.  Ejecutar el notebook: `notebooks/factor_analysis.ipynb`
+### Transformación del Modelo de Soporte (Habilitación)
+Para mejorar el factor 4, se debe pasar de reactivo a proactivo.
+* **Recomendación:** Invertir en una Academia de Usuarios con documentación moderna y video-tutoriales (*Training Quality*) para empoderar al cliente.
+* **Impacto Esperado:** Reducción de tickets de soporte de nivel 1 y aumento de la autonomía del cliente.
