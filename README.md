@@ -20,14 +20,6 @@ El portafolio consolida tres casos de negocio reales resueltos mediante técnica
 
 ---
 
-## Tabla de Contenidos
-1. [Resumen Ejecutivo de Casos](#-resumen-ejecutivo-de-casos)
-2. [Síntesis Metodológica](#-síntesis-metodológica)
-3. [Lecciones Aprendidas](#-lecciones-aprendidas)
-4. [Estructura del Repositorio](#-estructura-del-repositorio)
-5. [Instalación y Reproducibilidad](#-instalación-y-reproducibilidad)
-
----
 
 ## Resumen Ejecutivo de Casos
 
