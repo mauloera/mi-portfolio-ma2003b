@@ -115,7 +115,7 @@ Cada caso es independiente. Navegue a la carpeta de *notebooks* correspondiente 
 
 ## Declaración de Uso de IA
 
-De conformidad con las políticas de integridad académica del curso, declaramos que este portafolio utilizó herramientas de Inteligencia Artificial Generativa (ChatGPT/Gemini) como apoyo.
+De conformidad con las políticas de integridad académica del curso, declaramos que este portafolio utilizó herramientas de Inteligencia Artificial Generativa (ChatGPT y Gemini) como apoyo.
 
 * **Propósito del uso:** Asistencia en la estructuración de scripts, depuración de errores (debugging), mejora de estilo en redacción y generación de esqueletos de documentación.
 * **Validación humana:** Todo el código, análisis y conclusiones presentadas fueron revisados, validados y editados por los miembros del equipo para asegurar su precisión y alineación con el contexto del negocio. Asumimos plena responsabilidad por el contenido final.
