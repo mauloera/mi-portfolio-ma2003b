@@ -1,4 +1,4 @@
-# Portfolio de Análisis Multivariado en Ciencia de Datos 📊
+# Portfolio de Análisis Multivariado en Ciencia de Datos
 
 ![Status](https://img.shields.io/badge/Status-Completed-success)
 ![Python](https://img.shields.io/badge/Python-3.13-blue)
@@ -39,7 +39,7 @@ En este portafolio hemos aplicado tres familias de técnicas multivariadas disti
 
 | Característica | Factor Analysis (Caso 1) | Discriminant Analysis (Caso 2) | Cluster Analysis (Caso 3) |
 | :--- | :--- | :--- | :--- |
-| **Tipo de Aprendizaje** | **No Supervisado** | **Supervisado** | **No Supervisado** |
+| **Tipo de Aprendizaje** | No Supervisado | Supervisado | No Supervisado |
 | **¿Qué hace?** | Reduce muchas variables en pocos conceptos latentes. | Predice la pertenencia a un grupo conocido. | Descubre grupos naturales desconocidos. |
 | **Variable Objetivo (Y)** | No existe. Busca correlaciones internas ($X \leftrightarrow X$). | Existe y es categórica (Ej. Default: Sí/No). | No existe. Se infiere por distancia matemática. |
 | **Supuestos Clave** | Multicolinealidad entre variables es necesaria (KMO > 0.6). | Normalidad multivariada y homogeneidad de varianzas. | Los datos deben ser escalables y comparables. |
@@ -49,18 +49,13 @@ En este portafolio hemos aplicado tres familias de técnicas multivariadas disti
 
 ## Lecciones Aprendidas
 
-Reflexión crítica del equipo sobre el proceso de desarrollo y análisis:
+En el análisis de Clustering, aunque las fórmulas sugerían varias opciones de segmentación, la decisión final se basó en lo que realmente servía al negocio. Aprendimos que un modelo matemático puede ser perfecto, pero si no se puede explicar o utilizar, no tiene valor. Por eso nos enfocamos en ponerle nombres claros y útiles a cada grupo.
 
-1.  **La Interpretación supera a la Matemática:**
-    * *Desafío:* En el Caso 3 (Clustering), las métricas matemáticas sugerían varios números de clusters posibles.
-    * *Aprendizaje:* La decisión final siempre debe ser la que tenga más sentido de negocio. Un modelo perfecto que no se puede explicar o accionar es inútil. Aprendimos a "bautizar" factores y clusters con nombres de negocio reales.
+Aprendimos a no aferrarnos a nuestra primera idea. En el caso 1, al principio queríamos usar solo 3 factores porque sonaba más simple, pero los datos nos decían que había 5. Entendimos que el trabajo del analista es escuchar lo que dicen los números, no manipularlos para que digan lo que nosotros queremos.
 
-2.  **Calidad de Datos > Complejidad del Modelo:**
-    * *Desafío:* En el Caso 1, la presencia de valores nulos impedía el análisis factorial.
-    * *Aprendizaje:* La imputación estratégica y la limpieza previa son el 80% del éxito. "Garbage in, garbage out" es una realidad absoluta en métodos multivariados.
+Nos dimos cuenta de que lo más difícil no es programar, sino explicar los resultados para que sean entendibles para un público objetivo. Un $R^2$ de 0.60 no le dice nada a un gerente, pero decirle "esto explica el 60% de la satisfacción" es mucho más entendible para personas que no están familiarizadas. Aprendimos que nuestro trabajo real es traducir matemáticas complejas en instrucciones claras que cualquiera pueda entender.
 
-3.  **El Poder de la Reducción:**
-    * *Aprendizaje:* Tanto en Factor Analysis como en Discriminant (vía RFE), descubrimos que menos es más. Reducir 23 métricas a 5 factores (Caso 1) o filtrar variables redundantes (Caso 2) no solo simplifica el cómputo, sino que clarifica la estrategia para la dirección.
+Confirmamos que simplificar la información ayuda a tomar mejores decisiones. Tanto en el Análisis Factorial como en el Discriminante, vimos que reducir 23 métricas a solo 5 factores o eliminar variables repetidas no solo hace que el código corra más rápido, sino que facilita enormemente entender qué acciones tomar sin perderse en el ruido de los datos.
 
 ---
 
@@ -68,13 +63,17 @@ Reflexión crítica del equipo sobre el proceso de desarrollo y análisis:
 
 ```text
 mi-portfolio-ma2003b/
+├── .gitignore                     # Archivos ignorados por git
+├── .python-version                # Versión específica de Python para el entorno
+├── LICENSE                        # Licencia del proyecto
+├── README.md                      # Documentación central
 ├── pyproject.toml                 # Configuración de dependencias modernas
-├── README.md                      # Documentación central (Este archivo)
-├── case-01-factor-analysis/       # Proyecto de Satisfacción de Clientes
+├── uv.lock                        # Bloqueo de versiones
+├── case-01-factor-analysis/       # Proyecto de Satisfacción
 │   ├── README.md                  # Resumen Ejecutivo del Caso 1
 │   ├── data/                      # Datasets y Diccionarios
 │   ├── notebooks/                 # Código de análisis
-│   └── reports/                   # Reportes exportados (PDF)
+│   └── reports/                   # Reportes exportados
 ├── case-02-discriminant-analysis/ # Proyecto de Riesgo de Crédito
 │   ├── README.md                  # Resumen Ejecutivo del Caso 2
 │   ├── data/
@@ -111,6 +110,15 @@ pip install pandas numpy matplotlib seaborn scikit-learn factor-analyzer scipy i
 
 ### 3. Ejecutar los análisis
 Cada caso es independiente. Navegue a la carpeta de *notebooks* correspondiente y ejecute el archivo `.ipynb`.
+
+---
+
+## Declaración de Uso de IA
+
+De conformidad con las políticas de integridad académica del curso, declaramos que este portafolio utilizó herramientas de Inteligencia Artificial Generativa (ChatGPT/Gemini) como apoyo.
+
+* **Propósito del uso:** Asistencia en la estructuración de scripts, depuración de errores (debugging), mejora de estilo en redacción y generación de esqueletos de documentación.
+* **Validación humana:** Todo el código, análisis y conclusiones presentadas fueron revisados, validados y editados por los miembros del equipo para asegurar su precisión y alineación con el contexto del negocio. Asumimos plena responsabilidad por el contenido final.
 
 ---
 *Tecnológico de Monterrey - Noviembre 2025*
