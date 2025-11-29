@@ -12,11 +12,11 @@ El portafolio consolida tres casos de negocio reales resueltos mediante técnica
 
 ## Equipo de Trabajo (Team 4)
 
-| Nombre | Rol Principal |
-| :--- | :--- |
-| **Gerardo Javier López García** | Data Engineering & Processing |
-| **Emilio Guillén Ramírez** | Business Strategy & Insights |
-| **Mauricio Loera Abundis** | Modeling & Visualization |
+| Nombre | Matrícula | Rol Principal |
+| :--- | :--- | :--- |
+| **Mauricio Loera Abundis** | A01659048 | Data Engineering & Processing |
+| **Emilio Guillén Ramírez** | A01029858 | Business Strategy & Insights |
+| **Gerardo Javier López García** | A01660262 | Modeling & Visualization |
 
 ---
 
